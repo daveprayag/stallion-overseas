@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
+module.exports = {
+  images: {
+    domains: ["cloud.appwrite.io"],
+  },
   env: {
     NEXT_PUBLIC_APPWRITE_URL: process.env.NEXT_PUBLIC_APPWRITE_URL,
     NEXT_PUBLIC_APPWRITE_PROJECT_ID:
@@ -17,13 +20,5 @@ const nextConfig = {
       process.env.NEXT_PUBLIC_APPWRITE_INSTITUTIONS_ID,
     NEXT_PUBLIC_APPWRITE_INSTITUTIONS_STORAGE_ID:
       process.env.NEXT_PUBLIC_APPWRITE_INSTITUTIONS_STORAGE_ID,
-  },
-};
-
-export default nextConfig;
-
-module.exports = {
-  images: {
-    domains: ["cloud.appwrite.io"],
   },
 };
