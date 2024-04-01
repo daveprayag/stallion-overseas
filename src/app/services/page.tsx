@@ -35,7 +35,7 @@ export default function Services() {
               <h3 className="mb-2 text-2xl font-bold">Student Visa</h3>
               <p className="font-light text-gray-500">
                 Our expert team facilitates smooth visa applications for
-                students' academic journeys abroad.
+                students&apos; academic journeys abroad.
               </p>
             </div>
             <div>

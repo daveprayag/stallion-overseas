@@ -197,8 +197,6 @@ function Landing() {
             className="w-full h-full"
             autoPlay
             playsInline
-            x5-playsinline
-            webkit-playsinline
             controls
             controlsList="nodownload, noremoteplayback, noshare, nofullscreen"
             muted
