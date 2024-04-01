@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import { Provider } from "react-wrap-balancer";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="!scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-zinc-100`}>
+        <Provider>
+          <Navbar />
+          {children}
+          <Footer />
+        </Provider>
+      </body>
     </html>
   );
 }
