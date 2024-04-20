@@ -20,7 +20,7 @@ export default function Blogs() {
     } catch (error) {
       console.log("Error fetching blogs", error);
     }
-  }, []);
+  }, [blogService]);
 
   useEffect(() => {
     fetchBlogs();
@@ -64,22 +64,6 @@ export default function Blogs() {
       </motion.h1>
       <div className="flex justify-center space-x-4 pb-10">
         {/* Render button for All */}
-        {/* {!isLoading && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: "spring", duration: 1 }}
-            onClick={() => setSelectedCountry(null)}
-            className={`px-4 py-2 rounded-md ${
-              selectedCountry === null
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-800"
-            }`}
-          >
-            All
-          </motion.button>
-        )} */}
-
         {uniqueCountries.map((country) => (
           <motion.button
             initial={{ opacity: 0, scale: 0 }}

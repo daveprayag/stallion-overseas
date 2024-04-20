@@ -84,14 +84,14 @@ export default function Page() {
           renowned for its world-class education system, diverse culture, and
           welcoming environment. With top-ranked universities and colleges
           offering a wide range of programs, students can pursue their academic
-          passions while experiencing the beauty of Canada's landscapes. The
-          country's commitment to multiculturalism ensures that students from
-          around the globe feel at home, fostering a vibrant and inclusive
-          community. From bustling cities to picturesque natural wonders, Canada
-          offers a wealth of experiences beyond the classroom. Whether exploring
-          the vibrant arts scene in Toronto, skiing in the Rockies, or immersing
-          oneself in Indigenous culture, students are sure to create lasting
-          memories in this dynamic country.
+          passions while experiencing the beauty of Canada&apos;s landscapes.
+          The country&apos;s commitment to multiculturalism ensures that
+          students from around the globe feel at home, fostering a vibrant and
+          inclusive community. From bustling cities to picturesque natural
+          wonders, Canada offers a wealth of experiences beyond the classroom.
+          Whether exploring the vibrant arts scene in Toronto, skiing in the
+          Rockies, or immersing oneself in Indigenous culture, students are sure
+          to create lasting memories in this dynamic country.
         </p>
       </div>
 

@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-export default function page() {
+export default function Page() {
   const pathname = usePathname();
   const [blog, setBlog] = useState<any>({});
   const blogService = BlogService.getInstance();
@@ -18,7 +18,7 @@ export default function page() {
     } catch (error) {
       console.log("Error fetching blogs", error);
     }
-  }, []);
+  }, [blogService, pathname]);
 
   useEffect(() => {
     fetchBlogs();
