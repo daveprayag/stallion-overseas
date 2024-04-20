@@ -14,10 +14,19 @@ import { usePathname } from "next/navigation";
 
 function Navbar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isCountriesOpen, setCountriesOpen] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
+  };
+
+  const toggleCountries = () => {
+    setCountriesOpen(!isCountriesOpen);
+  };
+
+  const closeCountries = () => {
+    setCountriesOpen(false);
   };
 
   const variants = {
@@ -35,10 +44,11 @@ function Navbar() {
       transition: {
         duration: 0.3,
         ease: "easeInOut",
-        delay: 0.1,
+        delay: 0.2,
       },
     },
   };
+
   return (
     <>
       <FloatingButton />
@@ -46,7 +56,7 @@ function Navbar() {
         <motion.nav
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed overflow-hidden z-20 w-full bg-zinc-100/70 rounded-b-md backdrop-blur"
+          className="fixed z-20 w-full bg-zinc-100/70 rounded-b-md backdrop-blur"
         >
           {/* Navigation content */}
           <div className="px-6 mx-auto max-w-6xl 2xl:px-0 py-4 md:py-0">
@@ -80,6 +90,76 @@ function Navbar() {
               <div className="w-full h-0 lg:w-fit flex-wrap justify-end items-center space-y-8 lg:space-y-0 lg:flex lg:h-fit md:flex-nowrap">
                 <div className="mt-6 text-zinc-600 font-medium lg:x-4 lg:mt-0">
                   <ul className="space-y-6 tracking-wide text-balance lg:text-sm text-lg lg:flex lg:space-y-0">
+                    {/* Countries dropdown */}
+                    <li className="relative">
+                      <span
+                        onMouseEnter={toggleCountries}
+                        className="cursor-pointer hidden lg:block tracking-tight hover:text-zinc-900 md:px-4 text-[15px] transition hover:text-primary-600"
+                      >
+                        Countries
+                      </span>
+                      <motion.ul
+                        className={`absolute left-0 w-56 bg-white rounded-lg shadow-lg mt-2 ${
+                          isCountriesOpen ? "block" : "hidden disabled"
+                        }`}
+                        variants={variants}
+                        animate={isCountriesOpen ? "open" : "closed"}
+                        initial="closed"
+                        onMouseLeave={closeCountries}
+                      >
+                        <li className="px-3 pt-3 pb-2 hover:bg-zinc-100">
+                          <Link
+                            href="/countries/canada"
+                            className="cursor-default"
+                          >
+                            Canada 🇨🇦
+                          </Link>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-zinc-100">
+                          <Link href="/countries/uk" className="cursor-default">
+                            United Kingdom 🇬🇧
+                          </Link>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-zinc-100">
+                          <Link
+                            href="/countries/usa"
+                            className="cursor-default"
+                          >
+                            United States Of America 🇺🇸
+                          </Link>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-zinc-100">
+                          <Link
+                            href="/countries/australia"
+                            className="cursor-default"
+                          >
+                            Australia 🇦🇺
+                          </Link>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-zinc-100">
+                          <Link
+                            href="/countries/newzealand"
+                            className="cursor-default"
+                          >
+                            New Zealand 🇳🇿
+                          </Link>
+                        </li>
+                        <li className="px-3 py-2 hover:bg-zinc-100">
+                          <Link
+                            href="/countries/france"
+                            className="cursor-default"
+                          >
+                            France 🇫🇷
+                          </Link>
+                        </li>
+                        <li className="px-3 pt-2 pb-3 hover:bg-zinc-100">
+                          <Link href="/countries/eu" className="cursor-default">
+                            Europe 🌍
+                          </Link>
+                        </li>
+                        {/* Add other country links here */}
+                      </motion.ul>
+                    </li>
                     {links.map((link, index) => (
                       <motion.li
                         key={index}

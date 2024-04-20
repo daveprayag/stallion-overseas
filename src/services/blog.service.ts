@@ -13,6 +13,36 @@ class BlogService {
     return BlogService.instance;
   }
 
+  public getBlogById = async (id: string) => {
+    const blog = await this.db.getDocument(
+      process.env.NEXT_PUBLIC_APPWRITE_DB_ID as string,
+      process.env.NEXT_PUBLIC_APPWRITE_BLOGS_ID as string,
+      id
+    );
+
+    if (blog.imageId) {
+      const uploadedImage = await this.storage.getFileView(
+        process.env.NEXT_PUBLIC_APPWRITE_BLOGS_STORAGE_ID as string,
+        blog.imageId
+      );
+      return {
+        id: blog.$id,
+        title: blog.title,
+        description: blog.description,
+        country: blog.country,
+        imageUrl: uploadedImage,
+      };
+    } else {
+      return {
+        id: blog.$id,
+        title: blog.title,
+        description: blog.description,
+        country: blog.country,
+        imageUrl: null,
+      };
+    }
+  };
+
   public getBlogs = async () => {
     const blogs = await this.db.listDocuments(
       process.env.NEXT_PUBLIC_APPWRITE_DB_ID as string,
@@ -27,6 +57,7 @@ class BlogService {
             blog.imageId
           );
           return {
+            id: blog.$id,
             title: blog.title,
             description: blog.description,
             country: blog.country,
@@ -34,6 +65,7 @@ class BlogService {
           };
         } else {
           return {
+            id: blog.$id,
             title: blog.title,
             description: blog.description,
             country: blog.country,

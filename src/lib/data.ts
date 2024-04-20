@@ -4,11 +4,6 @@ export const links = [
     name: "About",
     url: "/about",
   },
-  // {
-  //   id: 2,
-  //   name: "Countries",
-  //   url: "/countries",
-  // },
   {
     id: 3,
     name: "Services",
@@ -26,6 +21,11 @@ export const links = [
   },
   {
     id: 6,
+    name: "Testimonials",
+    url: "/testimonials",
+  },
+  {
+    id: 7,
     name: "Contact",
     url: "/#contact",
   },

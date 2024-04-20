@@ -1,9 +1,16 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 function Footer() {
   return (
-    <footer className="bg-[#4761ab] w-full !bottom-0">
+    <motion.footer
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.175 }}
+      className="bg-[#4761ab] w-full "
+    >
       <div className="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 lg:pt-20 mx-auto">
         {/* <!-- Grid --> */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -218,7 +225,7 @@ function Footer() {
           {/* <!-- End Social Brands --> */}
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 

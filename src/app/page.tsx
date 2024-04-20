@@ -127,20 +127,24 @@ const whyUs = [
 
 const logos = [
   {
-    image: "/NYU.png",
-    alt: "New Youk University",
+    image: "/new-york-university.png",
+    alt: "New York University",
   },
   {
-    image: "/UCalgary-logo.png",
+    image: "/university_of_calgary.png",
     alt: "University of Calgary",
   },
   {
-    image: "/University_of_Toronto-Logo.png",
+    image: "/university-of-toronto.png",
     alt: "University of Toronto",
   },
   {
-    image: "/university-college-london-logo.png",
+    image: "/university-college-london.png",
     alt: "University College London",
+  },
+  {
+    image: "/monash-university.png",
+    alt: "Monash University",
   },
 ];
 
@@ -202,7 +206,7 @@ function Home() {
             muted
             loop
           >
-            <source src="/graduation.mp4" type="video/mp4" />
+            <source src="/landing-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </motion.video>
         </div>
@@ -342,9 +346,9 @@ function Home() {
       {/* Blogs */}
       <section>
         <div className="bg-zinc-100 py-20">
-          <h2 className="text-zinc-800 text-4xl mb-16 pt-4 font-semibold flex justify-center text-center lg:text-left tracking-tight">
+          {/* <h2 className="text-zinc-800 text-4xl sm:mb-16 font-semibold flex justify-center text-center lg:text-left tracking-tight">
             Blogs
-          </h2>
+          </h2> */}
           <motion.div
             ref={ref}
             style={{
@@ -354,50 +358,50 @@ function Home() {
             className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mx-auto container px-4 sm:px-6 lg:px-8 justify-between items-center"
           >
             {blogs
-              .slice()
+              .slice(0, 3)
               .reverse()
               .map((blog: any) => (
                 <div
                   key={blog.$id}
-                  className="max-w-xl bg-white/80 border border-zinc-100 backdrop-blur-lg rounded-3xl hover:shadow-lg transition"
+                  className="max-w-xl hover:cursor-pointer bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition"
                 >
-                  <div className="relative">
-                    <Image
-                      src={blog.imageUrl.href}
-                      alt="blog image"
-                      width={100}
-                      height={5}
-                      quality={100}
-                      loading="lazy"
-                      sizes="100vw"
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                      }}
-                      className="w-full h-80 rounded-3xl z-0"
-                    />
-                    <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">
-                      <span className="text-md font-medium text-gray-200 flex gap-6">
-                        {blog.country}
+                  <a href={`/blogs/${blog.id}`} target="_blank">
+                    <div className="relative">
+                      <Image
+                        src={blog.imageUrl.href}
+                        alt="blog image"
+                        width={100}
+                        height={75}
+                        quality={100}
+                        loading="lazy"
+                        objectFit="contain"
+                        className="w-full h-75 rounded-3xl z-0"
+                      />
+                      <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">
+                        <span className="text-md font-medium text-gray-200 flex gap-6">
+                          {blog.country}
+                        </span>
                       </span>
-                    </span>
-                  </div>
-                  <div className="p-3">
-                    <h2 className="text-2xl font-bold mb-2 tracking-tight">
-                      {blog.title}
-                    </h2>
-                    <p className="mb-4">
-                      {" "}
-                      {blog.description.split(" ").slice(0, 20).join(" ")}
-                      {blog.description.split(" ").length > 20 ? "..." : ""}
-                    </p>
-                    <a
-                      href={`/blogs/${blog.$id}`}
-                      className="text-[#4761ab] hover:underline"
-                    >
-                      Read more...
-                    </a>
-                  </div>
+                    </div>
+                    <div className="p-3">
+                      <h2 className="text-2xl font-bold mb-2 tracking-tight">
+                        {blog.title.split(" ").slice(0, 12).join(" ")}
+                        {blog.title.split(" ").length > 12 ? "..." : ""}
+                      </h2>
+                      <p className="mb-4">
+                        {" "}
+                        {blog.description.split(" ").slice(0, 20).join(" ")}
+                        {blog.description.split(" ").length > 20 ? "..." : ""}
+                      </p>
+                      <a
+                        target="_blank"
+                        href={`/blogs/${blog.id}`}
+                        className="text-[#4761ab] hover:underline"
+                      >
+                        Read more...
+                      </a>
+                    </div>
+                  </a>
                 </div>
               ))}
           </motion.div>
@@ -434,15 +438,15 @@ function Home() {
           <img
             src="contact.jpg"
             alt="Your Image"
-            className="object-cover object-center h-[772px] w-full rounded-2xl"
+            className="object-cover object-center h-[870px] w-full rounded-2xl"
           />
         </div>
         {/* Right side with form */}
-        <div className="w-full lg:w-1/2">
-          <form className="bg-zinc-100 rounded px-8 pt-6 pb-8 max-w-3xl">
+        <div className="w-full lg:w-1/2 pt-5">
+          <form className="bg-zinc-100 rounded px-8 pt-8 pb-8 max-w-3xl">
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="fullname"
               >
                 Full Name
@@ -456,7 +460,7 @@ function Home() {
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="phone"
               >
                 Phone Number
@@ -480,7 +484,7 @@ function Home() {
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="email"
               >
                 Email ID
@@ -494,7 +498,7 @@ function Home() {
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="city"
               >
                 City
@@ -508,42 +512,73 @@ function Home() {
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="destination"
               >
                 Preferred Study Destinations
               </label>
-              <div>
+              <div className="text-sm">
                 <label className="flex items-center">
                   <input
                     type="checkbox"
-                    className="form-checkbox h-5 w-5 text-blue-500"
-                    value="Country 1"
+                    className="form-checkbox h-4 w-4 text-blue-500"
+                    value="Canada"
                   />
-                  <span className="ml-2">Country 1</span>
+                  <span className="ml-2">Canada</span>
                 </label>
                 <label className="flex items-center">
                   <input
                     type="checkbox"
-                    className="form-checkbox h-5 w-5 text-blue-500"
-                    value="Country 2"
+                    className="form-checkbox h-4 w-4 text-blue-500"
+                    value="United Kingdom"
                   />
-                  <span className="ml-2">Country 2</span>
+                  <span className="ml-2">United Kingdom</span>
                 </label>
                 <label className="flex items-center">
                   <input
                     type="checkbox"
-                    className="form-checkbox h-5 w-5 text-blue-500"
-                    value="Country 3"
+                    className="form-checkbox h-4 w-4 text-blue-500"
+                    value="United States of America"
                   />
-                  <span className="ml-2">Country 3</span>
+                  <span className="ml-2">United States of America</span>
                 </label>
-                {/* Add more checkboxes as needed */}
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4"
+                    value="Australia"
+                  />
+                  <span className="ml-2">Australia</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-500"
+                    value="New Zealand"
+                  />
+                  <span className="ml-2">New Zealand</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-500"
+                    value="Countries of Europe"
+                  />
+                  <span className="ml-2">Countries of Europe</span>
+                </label>
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-500"
+                    value="France"
+                  />
+                  <span className="ml-2">France</span>
+                </label>
               </div>
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="intake"
               >
                 Which intake do you plan to study?
@@ -557,7 +592,7 @@ function Home() {
             </div>
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-zinc-700 text-sm font-semibold mb-1"
                 htmlFor="contacttime"
               >
                 Preferred Contact Time
@@ -566,6 +601,8 @@ function Home() {
                 className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 id="contacttime"
                 type="time"
+                min={9}
+                max={18}
               />
             </div>
             <div className="mb-10">
@@ -580,7 +617,7 @@ function Home() {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="w-full bg-[#4761ab] hover:bg-[#3e5bab] text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
                 type="button"
               >
                 Submit
