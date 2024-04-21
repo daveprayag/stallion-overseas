@@ -98,7 +98,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          "flex min-w-full shrink-0 gap-5 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -107,7 +107,7 @@ export const InfiniteMovingCards = ({
           <div key={idx}>
             {testimonial.youtubeLink ? (
               <iframe
-                className="rounded-3xl border border-zinc-600 hover:shadow-lg transition hover:shadow-[#4761ab] w-full h-full lg:h-[280px] md:h-[200px] xl:w-[550px] xl:h-[300px]"
+                className="rounded-3xl border border-zinc-600 hover:shadow-lg transition hover:shadow-[#4761ab] w-full h-full lg:h-[280px] md:h-[300px] xl:w-[550px] xl:h-[300px]"
                 src={testimonial.youtubeLink}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -115,21 +115,21 @@ export const InfiniteMovingCards = ({
               ></iframe>
             ) : (
               <li
-                className="sm:w-[350px] w-[250px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-zinc-700 px-8 py-6 md:w-[450px]"
+                className="sm:w-[350px] w-[250px] max-w-full h-[300px] hover:shadow-lg transition hover:shadow-[#67bf7f] relative rounded-2xl border border-b-0 flex-shrink-0 border-zinc-700 px-8 py-6 md:w-[450px]"
                 style={{
                   background:
                     "linear-gradient(180deg, var(--zinc-800), var(--zinc-900)",
                 }}
               >
-                <blockquote>
+                <blockquote className="flex flex-col h-full justify-between">
                   <div
                     aria-hidden="true"
-                    className="user-select-none rounded-2xl -z-1 hover:shadow-lg hover:shadow-[#67bf7f] transition absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                    className="user-select-none rounded-2xl -z-1 absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
                   ></div>
                   <span className="relative z-20 text-sm leading-[1.6] text-zinc-100 font-normal">
                     {testimonial.content}
                   </span>
-                  <div className="relative z-20 mt-6 flex flex-row h-full">
+                  <div className="relative z-20 mt-6 flex flex-row h-full items-end">
                     <Image
                       src={testimonial.imageUrl.href}
                       width={40}

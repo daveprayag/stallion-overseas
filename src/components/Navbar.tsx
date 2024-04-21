@@ -7,7 +7,7 @@ import {
   AiOutlineYoutube,
   AiOutlineWhatsApp,
 } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import FloatingButton from "./FloatingButton";
 import { usePathname } from "next/navigation";
@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 function Navbar() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCountriesOpen, setCountriesOpen] = useState(false);
+  const [isCountriesOpenMobile, setCountriesOpenMobile] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => {
@@ -27,6 +28,14 @@ function Navbar() {
 
   const closeCountries = () => {
     setCountriesOpen(false);
+  };
+
+  const toggleCountriesMobile = () => {
+    setCountriesOpenMobile(!isCountriesOpenMobile);
+  };
+
+  const closeCountriesMobile = () => {
+    setCountriesOpenMobile(false);
   };
 
   const variants = {
@@ -91,6 +100,7 @@ function Navbar() {
                 <div className="mt-6 text-zinc-600 font-medium lg:x-4 lg:mt-0">
                   <ul className="space-y-6 tracking-wide text-balance lg:text-sm text-lg lg:flex lg:space-y-0">
                     {/* Countries dropdown */}
+
                     <li className="relative">
                       <span
                         onMouseEnter={toggleCountries}
@@ -98,67 +108,51 @@ function Navbar() {
                       >
                         Countries
                       </span>
-                      <motion.ul
-                        className={`absolute left-0 w-56 bg-white rounded-lg shadow-lg mt-2 ${
-                          isCountriesOpen ? "block" : "hidden disabled"
-                        }`}
-                        variants={variants}
-                        animate={isCountriesOpen ? "open" : "closed"}
-                        initial="closed"
-                        onMouseLeave={closeCountries}
-                      >
-                        <li className="px-3 pt-3 pb-2 hover:bg-zinc-100">
-                          <Link
-                            href="/countries/canada"
-                            className="cursor-default"
+                      <AnimatePresence mode="wait">
+                        {isCountriesOpen && (
+                          <motion.ul
+                            className={`absolute cursor-pointer left-0 w-56 bg-white rounded-lg shadow-lg mt-2 ${
+                              isCountriesOpen ? "block" : "hidden disabled"
+                            }`}
+                            variants={variants}
+                            animate={isCountriesOpen ? "open" : "closed"}
+                            initial="closed"
+                            exit="closed"
+                            onMouseLeave={closeCountries}
                           >
-                            Canada 🇨🇦
-                          </Link>
-                        </li>
-                        <li className="px-3 py-2 hover:bg-zinc-100">
-                          <Link href="/countries/uk" className="cursor-default">
-                            United Kingdom 🇬🇧
-                          </Link>
-                        </li>
-                        <li className="px-3 py-2 hover:bg-zinc-100">
-                          <Link
-                            href="/countries/usa"
-                            className="cursor-default"
-                          >
-                            United States Of America 🇺🇸
-                          </Link>
-                        </li>
-                        <li className="px-3 py-2 hover:bg-zinc-100">
-                          <Link
-                            href="/countries/australia"
-                            className="cursor-default"
-                          >
-                            Australia 🇦🇺
-                          </Link>
-                        </li>
-                        <li className="px-3 py-2 hover:bg-zinc-100">
-                          <Link
-                            href="/countries/newzealand"
-                            className="cursor-default"
-                          >
-                            New Zealand 🇳🇿
-                          </Link>
-                        </li>
-                        <li className="px-3 py-2 hover:bg-zinc-100">
-                          <Link
-                            href="/countries/france"
-                            className="cursor-default"
-                          >
-                            France 🇫🇷
-                          </Link>
-                        </li>
-                        <li className="px-3 pt-2 pb-3 hover:bg-zinc-100">
-                          <Link href="/countries/eu" className="cursor-default">
-                            Europe 🌍
-                          </Link>
-                        </li>
-                        {/* Add other country links here */}
-                      </motion.ul>
+                            <li className="px-3 pt-3 pb-2 hover:bg-zinc-100">
+                              <Link href="/countries/canada">Canada 🇨🇦</Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link href="/countries/uk">
+                                United Kingdom 🇬🇧
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link href="/countries/usa">
+                                United States Of America 🇺🇸
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link href="/countries/australia">
+                                Australia 🇦🇺
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link href="/countries/newzealand">
+                                New Zealand 🇳🇿
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link href="/countries/france">France 🇫🇷</Link>
+                            </li>
+                            <li className="px-3 pt-2 pb-3 hover:bg-zinc-100">
+                              <Link href="/countries/eu">Europe 🌍</Link>
+                            </li>
+                            {/* Add other country links here */}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
                     </li>
                     {links.map((link, index) => (
                       <motion.li
@@ -202,46 +196,130 @@ function Navbar() {
             </div>
           </div>
           {/* Mobile menu */}
-          <motion.div
-            className="lg:hidden bg-zinc-100/70"
-            variants={variants}
-            animate={isMenuOpen ? "open" : "closed"}
-            initial={false}
-          >
-            <div className="mx-4 mb-4 bg-zinc-200 rounded-lg">
-              <ul>
-                {links.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.url}
-                      className="block py-3 px-4 ml-4 font-medium text-zinc-600 hover:bg-zinc-900"
+          <AnimatePresence mode="wait">
+            {isMenuOpen && (
+              <motion.div
+                className="lg:hidden bg-zinc-100/70"
+                variants={variants}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{ type: "tween", duration: 0.1 }}
+              >
+                <div className="mx-4 mb-4 pt-4 bg-zinc-200 rounded-lg">
+                  <ul>
+                    {links.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          href={link.url}
+                          className="block py-3 px-4 mx-4 rounded-md font-medium text-zinc-800 hover:bg-zinc-600 hover:text-zinc-100"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="relative">
+                      <span
+                        onClick={toggleCountriesMobile}
+                        className="cursor-pointer block py-3 px-4 mx-4 rounded-md font-medium text-zinc-800 hover:bg-zinc-600 hover:text-zinc-100"
+                      >
+                        Countries
+                      </span>
+                      <AnimatePresence mode="wait">
+                        {isCountriesOpenMobile && (
+                          <motion.ul
+                            className={`absolute left-0 w-56 bg-white rounded-lg shadow-lg mt-2 ${
+                              isCountriesOpenMobile ? "block" : "hidden"
+                            }`}
+                            variants={variants}
+                            animate={isCountriesOpenMobile ? "open" : "closed"}
+                            initial="closed"
+                            exit="closed"
+                          >
+                            <li className="px-3 pt-3 pb-2 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/canada"
+                                className="cursor-default"
+                              >
+                                Canada 🇨🇦
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/uk"
+                                className="cursor-default"
+                              >
+                                United Kingdom 🇬🇧
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/usa"
+                                className="cursor-default"
+                              >
+                                United States Of America 🇺🇸
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/australia"
+                                className="cursor-default"
+                              >
+                                Australia 🇦🇺
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/newzealand"
+                                className="cursor-default"
+                              >
+                                New Zealand 🇳🇿
+                              </Link>
+                            </li>
+                            <li className="px-3 py-2 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/france"
+                                className="cursor-default"
+                              >
+                                France 🇫🇷
+                              </Link>
+                            </li>
+                            <li className="px-3 pt-2 pb-3 hover:bg-zinc-100">
+                              <Link
+                                href="/countries/eu"
+                                className="cursor-default"
+                              >
+                                Europe 🌍
+                              </Link>
+                            </li>
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </li>
+                  </ul>
+                  {/* Instagram and YouTube buttons */}
+                  <div className="flex justify-center p-4">
+                    <a
+                      href="https://www.instagram.com/stallion_overseas/"
+                      target="_blank"
+                      className="flex items-center text-md font-normal justify-center w-full h-9 group text-zinc-600 lg:text-sm lg:h-8 px-3"
                     >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              {/* Instagram and YouTube buttons */}
-              <div className="flex justify-center p-4">
-                <a
-                  href="https://www.instagram.com/stallion_overseas/"
-                  target="_blank"
-                  className="flex items-center text-md font-normal justify-center w-full h-9 group text-zinc-600 lg:text-sm lg:h-8 px-3"
-                >
-                  <AiOutlineInstagram className="h-5 w-5 mr-1 text-orange-500" />
-                  <span>Instagram</span>
-                </a>
-                <a
-                  href=""
-                  target="_blank"
-                  className="flex items-center justify-center text-md w-full h-9 group text-zinc-600 lg:text-sm lg:h-8 px-3"
-                >
-                  <AiOutlineYoutube className="h-5 w-5 mr-1 text-red-600" />
-                  <span>YouTube</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
+                      <AiOutlineInstagram className="h-5 w-5 mr-1 text-orange-500" />
+                      <span>Instagram</span>
+                    </a>
+                    <a
+                      href=""
+                      target="_blank"
+                      className="flex items-center justify-center text-md w-full h-9 group text-zinc-600 lg:text-sm lg:h-8 px-3"
+                    >
+                      <AiOutlineYoutube className="h-5 w-5 mr-1 text-red-600" />
+                      <span>YouTube</span>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.nav>
       </header>
     </>
