@@ -73,7 +73,7 @@ export default function Page() {
   };
 
   return (
-    <div className="text-center flex flex-col items-center w-full min-h-screen pt-[100px] space-y-10">
+    <div className="text-center flex flex-col items-center w-full min-h-screen pt-[100px] space-y-10 pb-[100px]">
       {/* Info section */}
       <div>
         <h1 className=" text-zinc-800 font-semibold text-4xl pt-6 pb-10">
@@ -96,8 +96,8 @@ export default function Page() {
       </div>
 
       {/* Filter section */}
-      <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#67bf7f]/35 w-[240px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
-        <div className="w-44 relative transition-all duration-500 z-10">
+      <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#67bf7f]/35 w-[350px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
+        <div className="w-44 relative transition-all duration-500 z-0">
           <button
             className="shadow-md px-4 py-2 w-full relative flex flex-row items-center justify-between bg-white rounded-md"
             id="btnContainer"
@@ -149,7 +149,7 @@ export default function Page() {
           </AnimatePresence>
         </div>
 
-        <div className="w-44 relative transition-all duration-500 z-0">
+        <div className="w-44 relative transition-all duration-500 z-30">
           <button
             className="shadow-md px-4 py-2 w-full relative flex flex-row items-center justify-between bg-white rounded-md"
             id="btnContainer"
@@ -209,7 +209,7 @@ export default function Page() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "tween", duration: 0.7 }}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mx-auto container px-4 sm:px-6 lg:px-8 justify-items-center"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-12 mx-auto container px-4 sm:px-6 lg:px-8 justify-items-center"
       >
         {isLoading ? (
           <Skeleton count={5} height={200} />
@@ -218,22 +218,24 @@ export default function Page() {
             <motion.div
               key={institution.id}
               onClick={() => window.open(institution.website, "_blank")}
-              className="hover:cursor-pointer bg-white w-[240px] backdrop-blur-lg flex flex-col justify-between items-center rounded-2xl hover:shadow-lg hover:shadow-[#4761ab]/30 transition"
+              className="hover:cursor-pointer bg-white w-[240px] backdrop-blur-lg flex flex-col justify-between items-center rounded-2xl hover:shadow-lg z-20 hover:shadow-[#4761ab]/30 transition"
               // whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.5 }}
             >
               <Image
                 src={institution.imageUrl.href}
                 alt="institution image"
-                width={180}
+                width={100}
                 height={100}
-                quality={100}
+                objectFit="contain"
                 loading="lazy"
-                objectFit="cover"
-                className="rounded-lg mt-4"
+                sizes="100vw"
+                className="rounded-lg mt-4 w-auto px-2.5 h-[100px] object-contain"
               />
               <div className="p-3 w-full">
-                <h2 className="text-xl font-semibold">{institution.name}</h2>
+                <h2 className="text-xl font-semibold pb-2">
+                  {institution.name}
+                </h2>
                 <div className="!text-left px-2 space-y-1">
                   <p className="text-sm text-zinc-700">
                     {institution.province}

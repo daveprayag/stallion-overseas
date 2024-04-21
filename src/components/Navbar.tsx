@@ -300,7 +300,7 @@ function Navbar() {
                   {/* Instagram and YouTube buttons */}
                   <div className="flex justify-center p-4">
                     <a
-                      href="https://www.instagram.com/stallion_overseas/"
+                      href="https://www.instagram.com/stallionoverseasconsultants/"
                       target="_blank"
                       className="flex items-center text-md font-normal justify-center w-full h-9 group text-zinc-600 lg:text-sm lg:h-8 px-3"
                     >
@@ -308,7 +308,7 @@ function Navbar() {
                       <span>Instagram</span>
                     </a>
                     <a
-                      href=""
+                      href="https://www.youtube.com/@StallionOverseasConsultants"
                       target="_blank"
                       className="flex items-center justify-center text-md w-full h-9 group text-zinc-600 lg:text-sm lg:h-8 px-3"
                     >
