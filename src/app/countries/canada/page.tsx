@@ -97,7 +97,7 @@ export default function Page() {
 
       {/* Filter section */}
       <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#67bf7f]/35 w-[350px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
-        <div className="w-44 relative transition-all duration-500 z-0">
+        <div className="w-44 relative transition-all duration-500 z-20">
           <button
             className="shadow-md px-4 py-2 w-full relative flex flex-row items-center justify-between bg-white rounded-md"
             id="btnContainer"
@@ -118,7 +118,7 @@ export default function Page() {
           <AnimatePresence>
             {isOpen && (
               <motion.div
-                className="absolute w-full shadow-md mt-1 bg-white rounded-md flex flex-col"
+                className="absolute w-full shadow-md mt-1 bg-white rounded-md flex flex-col z-20"
                 id="divContainer"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ export default function Page() {
           </AnimatePresence>
         </div>
 
-        <div className="w-44 relative transition-all duration-500 z-30">
+        <div className="w-44 relative transition-all duration-500 z-10">
           <button
             className="shadow-md px-4 py-2 w-full relative flex flex-row items-center justify-between bg-white rounded-md"
             id="btnContainer"
@@ -218,7 +218,7 @@ export default function Page() {
             <motion.div
               key={institution.id}
               onClick={() => window.open(institution.website, "_blank")}
-              className="hover:cursor-pointer bg-white w-[240px] backdrop-blur-lg flex flex-col justify-between items-center rounded-2xl hover:shadow-lg z-20 hover:shadow-[#4761ab]/30 transition"
+              className="hover:cursor-pointer bg-white w-[240px] backdrop-blur-lg flex flex-col justify-between items-center rounded-2xl hover:shadow-lg z-0 hover:shadow-[#4761ab]/30 transition"
               // whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.5 }}
             >

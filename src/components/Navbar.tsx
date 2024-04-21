@@ -65,7 +65,7 @@ function Navbar() {
         <motion.nav
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed z-20 w-full bg-zinc-100/70 rounded-b-md backdrop-blur"
+          className="fixed z-30 w-full bg-zinc-100/70 rounded-b-md backdrop-blur"
         >
           {/* Navigation content */}
           <div className="px-6 mx-auto max-w-6xl 2xl:px-0 py-4 md:py-0">
