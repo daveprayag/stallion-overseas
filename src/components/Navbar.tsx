@@ -111,7 +111,7 @@ function Navbar() {
                       <AnimatePresence mode="wait">
                         {isCountriesOpen && (
                           <motion.ul
-                            className={`absolute cursor-pointer left-0 w-56 bg-white rounded-lg shadow-lg mt-2 ${
+                            className={`absolute cursor-pointer left-0 w-60 bg-white rounded-lg shadow-lg mt-2 ${
                               isCountriesOpen ? "block" : "hidden disabled"
                             }`}
                             variants={variants}
@@ -120,35 +120,117 @@ function Navbar() {
                             exit="closed"
                             onMouseLeave={closeCountries}
                           >
-                            <li className="px-3 pt-3 pb-2 hover:bg-zinc-100">
-                              <Link href="/countries/canada">Canada 🇨🇦</Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link href="/countries/uk">
-                                United Kingdom 🇬🇧
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link href="/countries/usa">
-                                United States Of America 🇺🇸
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link href="/countries/australia">
-                                Australia 🇦🇺
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link href="/countries/newzealand">
-                                New Zealand 🇳🇿
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link href="/countries/france">France 🇫🇷</Link>
-                            </li>
-                            <li className="px-3 pt-2 pb-3 hover:bg-zinc-100">
-                              <Link href="/countries/eu">Europe 🌍</Link>
-                            </li>
+                            <Link
+                              href="/countries/canada"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 pt-3 pb-2 hover:bg-zinc-100 flex gap-2">
+                                Canada{" "}
+                                <Image
+                                  src="/media/canada.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/uk"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                United Kingdom{" "}
+                                <Image
+                                  src="/media/united-kingdom.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/usa"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                United States Of America{" "}
+                                <Image
+                                  src="/media/united-states.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/australia"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                Australia{" "}
+                                <Image
+                                  src="/media/australia.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/newzealand"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                New Zealand{" "}
+                                <Image
+                                  src="/media/new-zealand.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/france"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-1">
+                                France{" "}
+                                <Image
+                                  src="/media/france.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/eu"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-1">
+                                Europe{" "}
+                                <Image
+                                  src="/media/worldwide.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
                             {/* Add other country links here */}
                           </motion.ul>
                         )}
@@ -209,14 +291,13 @@ function Navbar() {
                 <div className="mx-4 mb-4 pt-4 bg-zinc-200 rounded-lg">
                   <ul>
                     {links.map((link, index) => (
-                      <li key={index}>
-                        <Link
-                          href={link.url}
-                          className="block py-3 px-4 mx-4 rounded-md font-medium text-zinc-800 hover:bg-zinc-600 hover:text-zinc-100"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
+                      <Link
+                        href={link.url}
+                        onClick={toggleMenu}
+                        className="block py-3 px-4 mx-4 rounded-md font-medium text-zinc-800 hover:bg-zinc-600 hover:text-zinc-100"
+                      >
+                        <li key={index}>{link.name}</li>
+                      </Link>
                     ))}
                     <li className="relative">
                       <span
@@ -228,70 +309,126 @@ function Navbar() {
                       <AnimatePresence mode="wait">
                         {isCountriesOpenMobile && (
                           <motion.ul
-                            className={`absolute left-0 w-56 bg-white rounded-lg shadow-lg mt-2 ${
+                            className={`absolute left-0 w-64 bg-white rounded-lg shadow-lg mt-2 ${
                               isCountriesOpenMobile ? "block" : "hidden"
                             }`}
                             variants={variants}
                             animate={isCountriesOpenMobile ? "open" : "closed"}
                             initial="closed"
                             exit="closed"
+                            onClick={toggleMenu}
                           >
-                            <li className="px-3 pt-3 pb-2 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/canada"
-                                className="cursor-default"
-                              >
-                                Canada 🇨🇦
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/uk"
-                                className="cursor-default"
-                              >
-                                United Kingdom 🇬🇧
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/usa"
-                                className="cursor-default"
-                              >
-                                United States Of America 🇺🇸
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/australia"
-                                className="cursor-default"
-                              >
-                                Australia 🇦🇺
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/newzealand"
-                                className="cursor-default"
-                              >
-                                New Zealand 🇳🇿
-                              </Link>
-                            </li>
-                            <li className="px-3 py-2 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/france"
-                                className="cursor-default"
-                              >
-                                France 🇫🇷
-                              </Link>
-                            </li>
-                            <li className="px-3 pt-2 pb-3 hover:bg-zinc-100">
-                              <Link
-                                href="/countries/eu"
-                                className="cursor-default"
-                              >
-                                Europe 🌍
-                              </Link>
-                            </li>
+                            <Link
+                              href="/countries/canada"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 pt-3 pb-2 hover:bg-zinc-100 flex gap-2">
+                                Canada{" "}
+                                <Image
+                                  src="/media/canada.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/uk"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                United Kingdom{" "}
+                                <Image
+                                  src="/media/united-kingdom.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/usa"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                United States Of America{" "}
+                                <Image
+                                  src="/media/united-states.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/australia"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                Australia{" "}
+                                <Image
+                                  src="/media/australia.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/newzealand"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
+                                New Zealand{" "}
+                                <Image
+                                  src="/media/new-zealand.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/france"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-1">
+                                France{" "}
+                                <Image
+                                  src="/media/france.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
+
+                            <Link
+                              href="/countries/eu"
+                              className="cursor-default"
+                            >
+                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-1">
+                                Europe{" "}
+                                <Image
+                                  src="/media/worldwide.png"
+                                  width={20}
+                                  height={10}
+                                  alt="canada-logo"
+                                  className="object-contain"
+                                />
+                              </li>
+                            </Link>
                           </motion.ul>
                         )}
                       </AnimatePresence>

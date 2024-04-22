@@ -76,8 +76,15 @@ export default function Page() {
     <div className="text-center flex flex-col items-center w-full min-h-screen pt-[100px] space-y-10 pb-[100px]">
       {/* Info section */}
       <div>
-        <h1 className=" text-zinc-800 font-semibold text-4xl pt-6 pb-10">
-          Canada 🇨🇦
+        <h1 className=" text-zinc-800 font-semibold sm:text-4xl text-2xl pt-6 pb-10 flex items-center justify-center gap-4">
+          Study in Canada{" "}
+          <Image
+            src="/media/canada.png"
+            width={50}
+            height={50}
+            alt="canada-logo"
+            className="sm:w-[50px] w-[30px]"
+          />
         </h1>
         <p className="text-justify xl:px-80 px-10 text-lg tracking-tight text-zinc-600 ">
           Canada stands out as a top destination for international students,
@@ -103,7 +110,9 @@ export default function Page() {
             id="btnContainer"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="text-gray-700">{filterType || "Select type"}</span>
+            <span className="text-gray-700">
+              {filterType || "Institution type"}
+            </span>
             <svg
               className="fill-current h-4 w-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +165,7 @@ export default function Page() {
             onClick={() => setIsProvinceOpen(!isProvinceOpen)}
           >
             <span className="text-gray-700">
-              {filterProvince || "Select province"}
+              {filterProvince || "Province"}
             </span>
             <svg
               className="fill-current h-4 w-4"

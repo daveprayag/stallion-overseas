@@ -345,7 +345,7 @@ function Home() {
 
       {/* Blogs */}
       <section>
-        <div className="bg-zinc-100 py-20">
+        <div className="bg-zinc-100 pt-10">
           {/* <h2 className="text-zinc-800 text-4xl sm:mb-16 font-semibold flex justify-center text-center lg:text-left tracking-tight">
             Blogs
           </h2> */}
@@ -431,7 +431,10 @@ function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="flex justify-center">
+      <section
+        className="flex justify-center pt-[80px] sm:pt-[100px]"
+        id="contact"
+      >
         {/* Left side with image (hidden on screens less than lg) */}
         <div className="hidden lg:block w-full lg:w-1/2 h-full p-5">
           {/* Insert your image here */}
