@@ -292,11 +292,12 @@ function Navbar() {
                   <ul>
                     {links.map((link, index) => (
                       <Link
+                        key={index}
                         href={link.url}
                         onClick={toggleMenu}
                         className="block py-3 px-4 mx-4 rounded-md font-medium text-zinc-800 hover:bg-zinc-600 hover:text-zinc-100"
                       >
-                        <li key={index}>{link.name}</li>
+                        <li>{link.name}</li>
                       </Link>
                     ))}
                     <li className="relative">
