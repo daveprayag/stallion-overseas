@@ -111,7 +111,7 @@ function Navbar() {
                       <AnimatePresence mode="wait">
                         {isCountriesOpen && (
                           <motion.ul
-                            className={`absolute cursor-pointer left-0 w-60 bg-white rounded-lg shadow-lg mt-2 ${
+                            className={`absolute cursor-pointer left-0 w-60 bg-white text-md font-semibold rounded-lg shadow-lg mt-2 ${
                               isCountriesOpen ? "block" : "hidden disabled"
                             }`}
                             variants={variants}
@@ -122,10 +122,9 @@ function Navbar() {
                           >
                             <Link
                               href="/countries/canada"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 pt-3 pb-2 hover:bg-zinc-100 flex gap-2">
-                                Canada{" "}
                                 <Image
                                   src="/media/canada.png"
                                   width={20}
@@ -133,15 +132,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                Canada{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/uk"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                United Kingdom{" "}
                                 <Image
                                   src="/media/united-kingdom.png"
                                   width={20}
@@ -149,15 +148,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                United Kingdom{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/usa"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                United States Of America{" "}
                                 <Image
                                   src="/media/united-states.png"
                                   width={20}
@@ -165,15 +164,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                United States Of America{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/australia"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                Australia{" "}
                                 <Image
                                   src="/media/australia.png"
                                   width={20}
@@ -181,15 +180,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                Australia{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/newzealand"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                New Zealand{" "}
                                 <Image
                                   src="/media/new-zealand.png"
                                   width={20}
@@ -197,15 +196,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                New Zealand{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/france"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
-                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-1">
-                                France{" "}
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
                                 <Image
                                   src="/media/france.png"
                                   width={20}
@@ -213,15 +212,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                France{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/eu"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
-                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-1">
-                                Europe{" "}
+                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-2">
                                 <Image
                                   src="/media/worldwide.png"
                                   width={20}
@@ -229,6 +228,7 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                Germany{" "}
                               </li>
                             </Link>
                             {/* Add other country links here */}
@@ -321,10 +321,9 @@ function Navbar() {
                           >
                             <Link
                               href="/countries/canada"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 pt-3 pb-2 hover:bg-zinc-100 flex gap-2">
-                                Canada{" "}
                                 <Image
                                   src="/media/canada.png"
                                   width={20}
@@ -332,15 +331,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                Canada{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/uk"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                United Kingdom{" "}
                                 <Image
                                   src="/media/united-kingdom.png"
                                   width={20}
@@ -348,15 +347,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                United Kingdom{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/usa"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                United States Of America{" "}
                                 <Image
                                   src="/media/united-states.png"
                                   width={20}
@@ -364,15 +363,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                United States Of America{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/australia"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                Australia{" "}
                                 <Image
                                   src="/media/australia.png"
                                   width={20}
@@ -380,15 +379,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                Australia{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/newzealand"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
                               <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
-                                New Zealand{" "}
                                 <Image
                                   src="/media/new-zealand.png"
                                   width={20}
@@ -396,15 +395,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                New Zealand{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/france"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
-                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-1">
-                                France{" "}
+                              <li className="px-3 py-2 hover:bg-zinc-100 flex gap-2">
                                 <Image
                                   src="/media/france.png"
                                   width={20}
@@ -412,15 +411,15 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                France{" "}
                               </li>
                             </Link>
 
                             <Link
                               href="/countries/eu"
-                              className="cursor-default"
+                              className="cursor-pointer"
                             >
-                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-1">
-                                Europe{" "}
+                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-2">
                                 <Image
                                   src="/media/worldwide.png"
                                   width={20}
@@ -428,6 +427,7 @@ function Navbar() {
                                   alt="canada-logo"
                                   className="object-contain"
                                 />
+                                Germany{" "}
                               </li>
                             </Link>
                           </motion.ul>

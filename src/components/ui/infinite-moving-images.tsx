@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 export const InfiniteMovingImages = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "normal",
   pauseOnHover = true,
   className,
 }: {

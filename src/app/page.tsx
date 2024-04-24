@@ -191,7 +191,7 @@ function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[50em] overflow-hidden pt-[100px]">
+      <section className="relative h-[40rem] sm:h-[44rem] overflow-hidden pt-[100px]">
         <div className="relative inset-0 z-0 hidden lg:block">
           <motion.video
             initial={{ opacity: 0, scale: 0 }}
@@ -216,7 +216,7 @@ function Home() {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "tween", duration: 0.2 }}
-            className="xl:text-center text-white lg:w-1/2 px-4"
+            className="xl:text-center text-white lg:w-1/2 px-4 md:pt-4"
           >
             <span className="border w-fit mx-auto flex transition duration-200 rounded-full border-gray-800 px-4 py-1 mb-4">
               <span className="text-md font-medium text-gray-700 flex gap-6">
@@ -224,7 +224,7 @@ function Home() {
               </span>
             </span>
 
-            <h1 className="text-2xl md:text-5xl font-semibold text-center text-gray-800 tracking-tighter xl:text-5xl xl:[line-height:1.125]">
+            <h1 className="text-2xl sm:text-5xl font-semibold text-center text-gray-800 tracking-tighter xl:text-5xl xl:[line-height:1.125]">
               <Balancer>
                 Stallion Overseas Consultants:
                 <br className="" /> Facilitating Excellence in Study,{" "}
@@ -239,7 +239,7 @@ function Home() {
               <InfiniteMovingImages
                 items={logos}
                 direction="right"
-                speed="slow"
+                speed="normal"
               />
             </div>
           </motion.div>
@@ -304,7 +304,7 @@ function Home() {
         <div className="max-w-screen-xl py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
           <div className="lg:grid lg:grid-cols-2">
             <div className="text-gray-800 sm:text-lg ">
-              <h2 className="text-xl sm:text-3xl font-semibold pt-5 text-center lg:text-left tracking-tight text-zinc-800 px-2 sm:px-0">
+              <h2 className="text-xl md:text-3xl xl:text-5xl font-semibold pt-5 text-center lg:text-left tracking-tight text-zinc-800 px-2 sm:px-4">
                 Why Stallion Overseas Consultants?
               </h2>
             </div>
@@ -332,8 +332,8 @@ function Home() {
       {/* Testimonials */}
       <section>
         <div className="bg-zinc-950 flex flex-col pb-20">
-          <h2 className="text-zinc-100 text-3xl mb-16 pt-12 font-semibold flex justify-center text-center lg:text-left tracking-tight ">
-            Loved by our clients
+          <h2 className="text-zinc-100 text-2xl md:text-3xl xl:text-5xl py-10 sm:py-16 font-semibold flex justify-center text-center lg:text-left tracking-tight ">
+            Our success stories
           </h2>
           <InfiniteMovingCards
             items={testimonials}
@@ -345,10 +345,10 @@ function Home() {
 
       {/* Blogs */}
       <section>
-        <div className="bg-zinc-100 pt-10">
-          {/* <h2 className="text-zinc-800 text-4xl sm:mb-16 font-semibold flex justify-center text-center lg:text-left tracking-tight">
+        <div className="bg-zinc-100 pt-10 sm:pt-20">
+          <h2 className="text-zinc-800 text-2xl md:text-3xl xl:text-5xl mb-8 sm:mb-10 font-semibold flex justify-center text-center lg:text-left tracking-tight">
             Blogs
-          </h2> */}
+          </h2>
           <motion.div
             ref={ref}
             style={{
@@ -432,7 +432,7 @@ function Home() {
 
       {/* Contact Section */}
       <section
-        className="flex justify-center pt-[80px] sm:pt-[100px]"
+        className="flex justify-center pt-[80px] sm:pt-[100px] pb-20 px-0 xl:px-40"
         id="contact"
       >
         {/* Left side with image (hidden on screens less than lg) */}
@@ -441,7 +441,7 @@ function Home() {
           <img
             src="contact.jpg"
             alt="Your Image"
-            className="object-cover object-center h-[870px] w-full rounded-2xl"
+            className="object-cover object-center h-[840px] w-full rounded-2xl"
           />
         </div>
         {/* Right side with form */}

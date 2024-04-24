@@ -16,13 +16,13 @@ export const links = [
   },
   {
     id: 5,
-    name: "Case Studies",
-    url: "/casestudies",
+    name: "Testimonials",
+    url: "/testimonials",
   },
   {
     id: 6,
-    name: "Testimonials",
-    url: "/testimonials",
+    name: "Case Studies",
+    url: "/casestudies",
   },
   {
     id: 7,
