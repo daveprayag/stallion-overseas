@@ -31,6 +31,7 @@ class BlogService {
         description: blog.description,
         country: blog.country,
         imageUrl: uploadedImage,
+        tags: blog.tags,
       };
     } else {
       return {
@@ -39,6 +40,7 @@ class BlogService {
         description: blog.description,
         country: blog.country,
         imageUrl: null,
+        tags: blog.tags,
       };
     }
   };
@@ -62,6 +64,7 @@ class BlogService {
             description: blog.description,
             country: blog.country,
             imageUrl: uploadedImage,
+            tags: blog.tags,
           };
         } else {
           return {
@@ -70,6 +73,7 @@ class BlogService {
             description: blog.description,
             country: blog.country,
             imageUrl: null,
+            tags: blog.tags,
           };
         }
       })

@@ -340,6 +340,28 @@ function Home() {
             direction="right"
             speed="fast"
           />
+          <div className="flex justify-center mr-5 mt-5">
+            <Link
+              href={"/testimonials"}
+              className="group bg-zinc-200/90 px-4 py-2 flex items-center gap-2 text-zinc-800 rounded-xl border border-zinc-400/50 outline-none"
+            >
+              More Testimonials
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-4 w-4 group-hover:translate-x-1 transition"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -363,7 +385,7 @@ function Home() {
               .map((blog: any) => (
                 <div
                   key={blog.$id}
-                  className="max-w-xl hover:cursor-pointer bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition"
+                  className="max-w-xl hover:cursor-pointer bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition-smooth"
                 >
                   <a href={`/blogs/${blog.id}`} target="_blank">
                     <div className="relative">
@@ -375,7 +397,7 @@ function Home() {
                         quality={100}
                         loading="lazy"
                         objectFit="contain"
-                        className="w-full h-75 rounded-3xl z-0"
+                        className="w-full h-65 rounded-3xl z-0 object-cover"
                       />
                       <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">
                         <span className="text-md font-medium text-gray-200 flex gap-6">
@@ -385,13 +407,13 @@ function Home() {
                     </div>
                     <div className="p-3">
                       <h2 className="text-2xl font-bold mb-2 tracking-tight">
-                        {blog.title.split(" ").slice(0, 12).join(" ")}
-                        {blog.title.split(" ").length > 12 ? "..." : ""}
+                        {blog.title.split(" ").slice(0, 8).join(" ")}
+                        {blog.title.split(" ").length > 8 ? "..." : ""}
                       </h2>
                       <p className="mb-4">
                         {" "}
-                        {blog.description.split(" ").slice(0, 20).join(" ")}
-                        {blog.description.split(" ").length > 20 ? "..." : ""}
+                        {blog.description.split(" ").slice(0, 18).join(" ")}
+                        {blog.description.split(" ").length > 18 ? "..." : ""}
                       </p>
                       <a
                         target="_blank"
@@ -408,7 +430,7 @@ function Home() {
           <div className="flex justify-center mt-8">
             <Link
               href={"/blogs"}
-              className="group bg-[#4761ab]/90 px-7 py-3 flex items-center gap-2 text-zinc-50 rounded-full border border-zinc-400/50 outline-none"
+              className="group bg-[#4761ab]/90 px-4 py-2 flex items-center gap-2 text-zinc-50 font-medium rounded-xl border border-zinc-400/50 outline-none"
             >
               More Blogs
               <svg
@@ -567,7 +589,7 @@ function Home() {
                     className="form-checkbox h-4 w-4 text-blue-500"
                     value="Countries of Europe"
                   />
-                  <span className="ml-2">Countries of Europe</span>
+                  <span className="ml-2">Germany</span>
                 </label>
                 <label className="flex items-center">
                   <input
