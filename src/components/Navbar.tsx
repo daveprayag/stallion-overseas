@@ -217,12 +217,12 @@ function Navbar() {
                             </Link>
 
                             <Link
-                              href="/countries/eu"
+                              href="/countries/germany"
                               className="cursor-pointer"
                             >
                               <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-2">
                                 <Image
-                                  src="/media/worldwide.png"
+                                  src="/media/germany.png"
                                   width={20}
                                   height={10}
                                   alt="canada-logo"
@@ -416,12 +416,12 @@ function Navbar() {
                             </Link>
 
                             <Link
-                              href="/countries/eu"
+                              href="/countries/germany"
                               className="cursor-pointer"
                             >
                               <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-2">
                                 <Image
-                                  src="/media/worldwide.png"
+                                  src="/media/germany.png"
                                   width={20}
                                   height={10}
                                   alt="canada-logo"

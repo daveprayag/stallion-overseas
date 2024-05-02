@@ -102,7 +102,7 @@ export default function Page() {
       </div>
 
       {/* Filter section */}
-      <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#67bf7f]/35 w-[350px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
+      <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#4761ab]/55 w-[350px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
         <div className="w-44 relative transition-all duration-500 z-20">
           <button
             className="shadow-md px-4 py-2 w-full relative flex flex-row items-center justify-between bg-white rounded-md"
@@ -208,7 +208,7 @@ export default function Page() {
           className="bg-red-500 hover:bg-red-600 text-zinc-100 font-normal py-1 px-3 rounded-lg focus:outline-none focus:shadow-outline"
           onClick={clearFilters}
         >
-          Clear
+          Reset
         </button>
       </div>
 

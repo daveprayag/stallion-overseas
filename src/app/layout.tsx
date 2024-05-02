@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Provider } from "react-wrap-balancer";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Provider>
           <Navbar />
           {children}
+          <Toaster position="top-right" />
           <Footer />
         </Provider>
       </body>

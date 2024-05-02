@@ -10,6 +10,9 @@ import { useState } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import BlogService from "@/services/blog.service";
 import { useRouter } from "next/navigation";
+import { sendEmail } from "../../actions/sendEmail";
+import toast from "react-hot-toast";
+import Carousel from "@/components/Carousel";
 
 const testimonials = [
   {
@@ -458,17 +461,23 @@ function Home() {
         id="contact"
       >
         {/* Left side with image (hidden on screens less than lg) */}
-        <div className="hidden lg:block w-full lg:w-1/2 h-full p-5">
+        <div className="hidden lg:block w-full lg:w-1/2 h-full">
           {/* Insert your image here */}
-          <img
-            src="contact.jpg"
-            alt="Your Image"
-            className="object-cover object-center h-[840px] w-full rounded-2xl"
-          />
+          <Carousel />
         </div>
         {/* Right side with form */}
         <div className="w-full lg:w-1/2 pt-5">
-          <form className="bg-zinc-100 rounded px-8 pt-8 pb-8 max-w-3xl">
+          <form
+            className="bg-zinc-100 rounded px-8 pt-8 pb-8 max-w-3xl"
+            action={async (formData) => {
+              const { data, error } = await sendEmail(formData);
+              if (error) {
+                toast.error(error);
+                return;
+              }
+              toast.success("Email sent successfully!");
+            }}
+          >
             <div className="mb-4">
               <label
                 className="block text-zinc-700 text-sm font-semibold mb-1"

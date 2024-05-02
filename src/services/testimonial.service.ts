@@ -33,6 +33,7 @@ class TestimonialService {
             country: testimonial.country,
             youtubeLink: testimonial.youtubeLink,
             imageUrl: uploadedImage,
+            tag: testimonial.tag,
           };
         } else {
           return {
@@ -42,6 +43,7 @@ class TestimonialService {
             country: testimonial.country,
             youtubeLink: testimonial.youtubeLink,
             imageUrl: null,
+            tag: testimonial.tag,
           };
         }
       })

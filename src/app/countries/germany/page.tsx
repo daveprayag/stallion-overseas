@@ -33,7 +33,7 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    fetchInstitutions("EU");
+    fetchInstitutions("Germany");
   }, [fetchInstitutions]);
 
   useEffect(() => {
@@ -77,9 +77,9 @@ export default function Page() {
       {/* Info section */}
       <div>
         <h1 className=" text-zinc-800 font-semibold sm:text-4xl text-2xl pt-6 pb-10 flex items-center justify-center gap-4">
-          Study in Europe{" "}
+          Study in Germany{" "}
           <Image
-            src="/media/worldwide.png"
+            src="/media/germany.png"
             width={50}
             height={50}
             alt="australia-logo"
@@ -87,21 +87,29 @@ export default function Page() {
           />
         </h1>
         <p className="text-justify xl:px-80 px-10 text-lg tracking-tight text-zinc-600 ">
-          The countries of the European Union offer students a diverse and
-          enriching educational experience. With a wide range of universities
-          and colleges to choose from, students can pursue their academic
-          passions in fields ranging from art and literature to science and
-          technology. The EU&apos;s commitment to freedom of movement and
-          multiculturalism ensures that students feel welcome and supported,
-          whether studying in bustling metropolises or quaint countryside towns.
-          From exploring historic landmarks to sampling delicious cuisine,
-          students can immerse themselves in the rich cultural tapestry of
-          Europe while pursuing their academic goals.
+          Germany stands as a premier destination for international students,
+          celebrated for its exceptional academic institutions, innovative
+          research opportunities, and vibrant cultural scene. Home to renowned
+          universities such as Heidelberg and Technical University of Munich,
+          Germany offers a diverse array of academic programs in fields ranging
+          from engineering to the arts. Students benefit from a supportive
+          learning environment that fosters intellectual curiosity and personal
+          growth.
+          <br />
+          <br />
+          Germany&apos;s commitment to multiculturalism and openness ensures
+          that students from around the world feel welcome and integrated into
+          society. Whether exploring historic cities like Berlin and Munich,
+          hiking in the Black Forest, or attending world-class cultural events,
+          students can immerse themselves in Germany&apos;s rich heritage and
+          contemporary vitality. This dynamic backdrop enriches the academic
+          experience and creates lasting memories for students pursuing their
+          educational aspirations in Germany.
         </p>
       </div>
 
       {/* Filter section */}
-      <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#67bf7f]/35 w-[350px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
+      <div className="flex sm:flex-row flex-col justify-between items-center h-[200px] sm:h-auto bg-[#4761ab]/55 w-[350px] sm:w-[500px] py-5 sm:py-10 rounded-lg px-4">
         <div className="w-44 relative transition-all duration-500 z-20">
           <button
             className="shadow-md px-4 py-2 w-full relative flex flex-row items-center justify-between bg-white rounded-md"
@@ -207,7 +215,7 @@ export default function Page() {
           className="bg-red-500 hover:bg-red-600 text-zinc-100 font-normal py-1 px-3 rounded-lg focus:outline-none focus:shadow-outline"
           onClick={clearFilters}
         >
-          Clear
+          Reset
         </button>
       </div>
 

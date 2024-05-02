@@ -115,7 +115,7 @@ export const InfiniteMovingCards = ({
               ></iframe>
             ) : (
               <li
-                className="sm:w-[350px] w-[250px] max-w-full h-[300px] hover:shadow-lg transition hover:shadow-[#67bf7f] relative rounded-2xl border border-b-0 flex-shrink-0 border-zinc-700 px-8 py-6 md:w-[450px]"
+                className="sm:w-[350px] w-[250px] max-w-full h-[380px] sm:h-[300px] hover:shadow-lg transition hover:shadow-[#67bf7f] relative rounded-2xl border border-b-0 flex-shrink-0 border-zinc-700 px-8 py-6 md:w-[450px]"
                 style={{
                   background:
                     "linear-gradient(180deg, var(--zinc-800), var(--zinc-900)",
@@ -135,7 +135,7 @@ export const InfiniteMovingCards = ({
                       width={40}
                       height={40}
                       alt={testimonial.name}
-                      className="w-10 h-10 rounded-full mr-2"
+                      className="w-10 h-10 rounded-full mr-2 justify-center items-center object-center"
                     />
                     <span className="flex flex-col gap-1">
                       <span className="text-sm text-gray-400 font-normal">

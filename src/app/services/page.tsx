@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import React from "react";
 
 export default function Services() {
@@ -13,7 +14,10 @@ export default function Services() {
           className="items-center max-w-screen-xl px-4 py-10 mx-auto lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-28 lg:py-24 lg:px-6"
         >
           <div className="col-span-2 space-y-8 md:grid md:grid-cols-3 md:gap-12 md:space-y-0 md:mb-12">
-            <div>
+            <Link
+              className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl"
+              href={""}
+            >
               <svg
                 version="1.0"
                 viewBox="0 0 24 24"
@@ -33,12 +37,15 @@ export default function Services() {
                 ></path>
               </svg>
               <h3 className="mb-2 text-2xl font-bold">Student Visa</h3>
-              <p className="font-light text-gray-500">
+              <p className="font-light text-zinc-500">
                 Our expert team facilitates smooth visa applications for
                 students&apos; academic journeys abroad.
               </p>
-            </div>
-            <div>
+            </Link>
+            <Link
+              className="hover:shadow-lg ease-in-out p-5 border duration-300 bg-white rounded-xl"
+              href={""}
+            >
               <svg
                 overflow="hidden"
                 viewBox="0 0 96 96"
@@ -70,8 +77,11 @@ export default function Services() {
                 We offer comprehensive support for spouses seeking visas to
                 reunite & pursue aspirations abroad.
               </p>
-            </div>
-            <div>
+            </Link>
+            <Link
+              className="hover:shadow-lg ease-in-out p-5 border duration-300 bg-white rounded-xl"
+              href={""}
+            >
               <svg
                 className="w-10 h-10 mb-2 text-purple-600 md:w-12 md:h-12 "
                 fill="currentColor"
@@ -89,7 +99,7 @@ export default function Services() {
                 Discover new horizons with our visitor visa assistance for
                 leisure or business travel.
               </p>
-            </div>
+            </Link>
           </div>
           <div className="col-span-2 space-y-8 md:grid md:grid-cols-3 md:gap-12 md:space-y-0">
             <div>
