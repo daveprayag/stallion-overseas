@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { sendEmail } from "../../actions/sendEmail";
 import toast from "react-hot-toast";
 import Carousel from "@/components/Carousel";
+import { InfiniteMovingAnnouncements } from "@/components/ui/infinite-moving-announcements";
 
 const testimonials = [
   {
@@ -249,6 +250,11 @@ function Home() {
         </div>
       </section>
 
+      {/* Announcements Section */}
+      <section>
+        <InfiniteMovingAnnouncements />
+      </section>
+
       {/* Milestones Section */}
       <section className=" bg-zinc-950 py-10 lg:py-14 lg:px-[12rem]">
         <motion.div
@@ -341,7 +347,7 @@ function Home() {
           <InfiniteMovingCards
             items={testimonials}
             direction="right"
-            speed="fast"
+            speed="normal"
           />
           <div className="flex justify-center mr-5 mt-5">
             <Link
@@ -388,19 +394,16 @@ function Home() {
               .map((blog: any) => (
                 <div
                   key={blog.$id}
-                  className="max-w-xl hover:cursor-pointer bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition-smooth"
+                  className="max-w-xl hover:cursor-pointer ease-in-out duration-300 bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition-smooth"
                 >
                   <a href={`/blogs/${blog.id}`} target="_blank">
                     <div className="relative">
-                      <Image
+                      <img
                         src={blog.imageUrl.href}
                         alt="blog image"
                         width={100}
-                        height={75}
-                        quality={100}
-                        loading="lazy"
-                        objectFit="contain"
-                        className="w-full h-65 rounded-3xl z-0 object-cover"
+                        height={100}
+                        className="w-full h-64 rounded-3xl z-0 object-cover"
                       />
                       <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">
                         <span className="text-md font-medium text-gray-200 flex gap-6">
@@ -430,7 +433,7 @@ function Home() {
                 </div>
               ))}
           </motion.div>
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-14">
             <Link
               href={"/blogs"}
               className="group bg-[#4761ab]/90 px-4 py-2 flex items-center gap-2 text-zinc-50 font-medium rounded-xl border border-zinc-400/50 outline-none"

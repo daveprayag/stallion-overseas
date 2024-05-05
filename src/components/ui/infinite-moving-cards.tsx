@@ -1,5 +1,6 @@
 "use client";
 
+import AnnouncementService from "@/services/announcement.service";
 import TestimonialService from "@/services/testimonial.service";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
