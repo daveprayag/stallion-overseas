@@ -10,5 +10,10 @@ module.exports = {
   images: {
     domains: ["cloud.appwrite.io"],
   },
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+
+    return config;
+  },
   nextConfig,
 };

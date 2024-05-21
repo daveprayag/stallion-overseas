@@ -16,7 +16,7 @@ export default function Services() {
         >
           <div className="col-span-2 space-y-8 md:grid md:grid-cols-3 md:gap-12 md:space-y-0 md:mb-12">
             <div className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl">
-              <Link href={""}>
+              <Link href="services/student-visa">
                 <Image
                   src="/media/student-visa.png"
                   width={70}
@@ -32,7 +32,7 @@ export default function Services() {
               </Link>
             </div>
             <div className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl">
-              <Link href={""}>
+              <Link href="/services/spouse-visa">
                 <Image
                   src="/media/spouse-visa.png"
                   width={60}
@@ -48,7 +48,7 @@ export default function Services() {
               </Link>
             </div>
             <div className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl">
-              <Link href={""}>
+              <Link href="/services/visitor-visa">
                 <Image
                   src="/media/visitor-visa.png"
                   width={70}
@@ -65,51 +65,59 @@ export default function Services() {
             </div>
           </div>
           <div className="col-span-2 space-y-8 md:grid md:grid-cols-3 md:gap-12 md:space-y-0">
-            <div>
-              <Image
-                src="/media/permanent-residence.png"
-                width={70}
-                height={80}
-                className="mb-2"
-                alt="permanent-residence"
-              />
-              <h3 className="mb-2 text-2xl font-bold ">
-                Permanent Residency (Canada)
-              </h3>
-              <p className="font-light text-gray-500 ">
-                Let us guide you to Canadian residency with tailored solutions
-                and expertise.
-              </p>
+            <div className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl">
+              <Link href="/services/permanent-residency">
+                <Image
+                  src="/media/permanent-residence.png"
+                  width={70}
+                  height={80}
+                  className="mb-2"
+                  alt="permanent-residence"
+                />
+                <h3 className="mb-2 text-2xl font-bold ">
+                  Permanent Residency (Canada)
+                </h3>
+                <p className="font-light text-gray-500 ">
+                  Let us guide you to Canadian residency with tailored solutions
+                  and expertise.
+                </p>
+              </Link>
             </div>
-            <div>
-              <Image
-                src="/media/family-visa.png"
-                width={70}
-                height={80}
-                className="mb-2"
-                alt="family-visa"
-              />
-              <h3 className="mb-2 text-2xl font-bold ">
-                Family Sponsorships (Canada)
-              </h3>
-              <p className="font-light text-gray-500 ">
-                Bring your family together in Canada with our seamless
-                sponsorship services.
-              </p>
+            <div className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl">
+              <Link href="/services/family-sponsorship">
+                <Image
+                  src="/media/family-visa.png"
+                  width={70}
+                  height={80}
+                  className="mb-2"
+                  alt="family-visa"
+                />
+                <h3 className="mb-2 text-2xl font-bold ">
+                  Family Sponsorships (Canada)
+                </h3>
+                <p className="font-light text-gray-500 ">
+                  Bring your family together in Canada with our seamless
+                  sponsorship services.
+                </p>
+              </Link>
             </div>
-            <div>
-              <Image
-                src="/media/work-permit.png"
-                width={60}
-                height={80}
-                className="mb-2"
-                alt="work-permit"
-              />
-              <h3 className="mb-2 text-2xl font-bold ">Work Permit (Canada)</h3>
-              <p className="font-light text-gray-500 ">
-                Advance your career in Canada with our expert guidance on
-                securing work permits.
-              </p>
+            <div className="hover:shadow-lg ease-in-out p-5 duration-300 bg-zinc-100 rounded-xl">
+              <Link href="/services/work-permit">
+                <Image
+                  src="/media/work-permit.png"
+                  width={60}
+                  height={80}
+                  className="mb-2"
+                  alt="work-permit"
+                />
+                <h3 className="mb-2 text-2xl font-bold ">
+                  Work Permit (Canada)
+                </h3>
+                <p className="font-light text-gray-500 ">
+                  Advance your career in Canada with our expert guidance on
+                  securing work permits.
+                </p>
+              </Link>
             </div>
           </div>
         </motion.div>

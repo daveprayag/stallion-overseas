@@ -184,11 +184,13 @@ export default function Blogs() {
             className="max-w-xl hover:cursor-pointer bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition"
           >
             <a href={`/blogs/${blog.id}`} target="_blank" className="relative">
-              <img
+              <Image
                 src={blog.imageUrl.href}
                 alt="blog image"
                 width={100}
                 height={100}
+                quality="100"
+                loading="lazy"
                 className="w-full h-64 rounded-3xl z-0 object-cover"
               />
               <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">

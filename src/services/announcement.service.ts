@@ -34,7 +34,6 @@ class AnnouncementService {
       })
     );
 
-    console.log(allAnnouncements);
     return allAnnouncements;
   };
 }

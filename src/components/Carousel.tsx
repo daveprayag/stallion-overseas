@@ -4,14 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Carousel = () => {
   const [current, setCurrent] = useState(0);
-  const images = ["contact.jpg", "contact1.jpg"];
+  const images = ["contact.jpg", "contact1.jpeg", "contact2.jpeg"];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prevCurrent) => (prevCurrent + 1) % images.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [images.length]);
 
   return (
     <div>

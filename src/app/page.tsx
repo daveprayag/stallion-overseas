@@ -195,14 +195,14 @@ function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[40rem] sm:h-[44rem] overflow-hidden pt-[100px]">
+      <section className="relative h-[45rem] sm:h-[44rem] overflow-hidden pt-[100px]">
         <div className="relative inset-0 z-0 hidden lg:block">
           <motion.video
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "tween", duration: 0.2 }}
             preload="auto"
-            className="w-full h-full"
+            className="w-full h-full object-right-top object-cover"
             autoPlay
             playsInline
             controls
@@ -215,19 +215,23 @@ function Home() {
           </motion.video>
         </div>
         {/* Text Div */}
-        <div className="absolute inset-0 z-10 flex justify-center items-center bg-gradient-to-r from-zinc-100 from-50% via-zinc-100/10 lg:flex-col lg:justify-center lg:items-start">
+        <div className="absolute inset-0 z-10 flex sm:pt-0 pt-[80px] justify-center items-center bg-gradient-to-r from-zinc-100 from-50% via-zinc-100/10 lg:flex-col lg:justify-center lg:items-start">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "tween", duration: 0.2 }}
             className="xl:text-center text-white lg:w-1/2 px-4 md:pt-4"
           >
-            <span className="border w-fit mx-auto flex transition duration-200 rounded-full border-gray-800 px-4 py-1 mb-4">
+            <img
+              src="/landing-mobile-image.jpeg"
+              alt="Stallion Overseas Consultants"
+              className="w-[300px] sm:hidden block mx-auto rounded-lg"
+            />
+            <span className="border w-fit mx-auto flex transition duration-200 rounded-full border-gray-800 px-4 py-1 mb-4 mt-4">
               <span className="text-md font-medium text-gray-700 flex gap-6">
                 ICCRC Licensed
               </span>
             </span>
-
             <h1 className="text-2xl sm:text-5xl font-semibold text-center text-gray-800 tracking-tighter xl:text-5xl xl:[line-height:1.125]">
               <Balancer>
                 Stallion Overseas Consultants:
@@ -235,7 +239,6 @@ function Home() {
                 <br className="" /> Work and Settlement{" "}
               </Balancer>
             </h1>
-
             <div className="mt-20">
               <p className="mx-auto max-w-2xl text-lg text-center text-gray-700">
                 Our students have got admits into:
@@ -252,16 +255,22 @@ function Home() {
 
       {/* Announcements Section */}
       <section>
-        <InfiniteMovingAnnouncements />
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: "tween", duration: 0.2 }}
+        >
+          <InfiniteMovingAnnouncements />
+        </motion.div>
       </section>
 
       {/* Milestones Section */}
-      <section className=" bg-zinc-950 py-10 lg:py-14 lg:px-[12rem]">
+      <section className="">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.175 }}
-          className="flex items-center sm:flex-row gap-8 flex-col text-center sm:justify-between text-zinc-50"
+          className="flex items-center sm:flex-row gap-8 bg-zinc-950 py-10 lg:py-14 lg:px-[12rem] flex-col text-center sm:justify-between text-zinc-50"
         >
           <div className="flex flex-col">
             <h2 className="text-wrap text-4xl text-zinc-50 font-semibold tracking-tighter">
@@ -377,7 +386,7 @@ function Home() {
       {/* Blogs */}
       <section>
         <div className="bg-zinc-100 pt-10 sm:pt-20">
-          <h2 className="text-zinc-800 text-2xl md:text-3xl xl:text-5xl mb-8 sm:mb-10 font-semibold flex justify-center text-center lg:text-left tracking-tight">
+          <h2 className="text-zinc-800 text-3xl md:text-3xl xl:text-5xl mb-0 sm:mb-10 font-semibold flex justify-center text-center lg:text-left tracking-tight">
             Blogs
           </h2>
           <motion.div
@@ -386,7 +395,7 @@ function Home() {
               scale: scaleProgess,
               opacity: opacityProgess,
             }}
-            className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mx-auto container px-4 sm:px-6 lg:px-8 justify-between items-center"
+            className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-7xl justify-between items-center"
           >
             {blogs
               .slice(0, 3)
@@ -398,11 +407,12 @@ function Home() {
                 >
                   <a href={`/blogs/${blog.id}`} target="_blank">
                     <div className="relative">
-                      <img
+                      <Image
                         src={blog.imageUrl.href}
                         alt="blog image"
                         width={100}
                         height={100}
+                        loading="lazy"
                         className="w-full h-64 rounded-3xl z-0 object-cover"
                       />
                       <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">
@@ -649,7 +659,17 @@ function Home() {
                 id="terms"
               />
               <label className="text-sm" htmlFor="terms">
-                I agree to the Terms and Privacy Policy
+                I agree to the{" "}
+                <Link href="/terms" className="text-blue-800 hover:underline">
+                  Terms
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/privacy-policy"
+                  className="text-blue-800 hover:underline"
+                >
+                  Privacy Policy
+                </Link>
               </label>
             </div>
             <div className="flex items-center justify-center">

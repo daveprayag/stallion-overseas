@@ -157,8 +157,8 @@ export default function Testimonials() {
           </button>
         </div>
 
-        <div className="max-w-6xl md:mx-20 mx-10 py-10">
-          <Masonry columns={columns} spacing={1.5}>
+        <div className="max-w-7xl md:mx-20 mx-10 py-10">
+          <Masonry columns={columns} spacing={2}>
             {testimonials
               .filter((testimonial) =>
                 selectedCountry ? testimonial.country === selectedCountry : true
@@ -180,8 +180,8 @@ export default function Testimonials() {
                       className="w-full h-[200px] rounded-lg"
                     ></iframe>
                   ) : (
-                    <div>
-                      <span className="text-sm leading-[1.6] text-zinc-800 font-medium">
+                    <div className="text-justify">
+                      <span className="text-[15px] text-zinc-600 font-medium">
                         {testimonial.content}
                       </span>
                       <div className="mt-6 flex flex-row h-full items-center text-start ">
@@ -192,11 +192,11 @@ export default function Testimonials() {
                           alt={testimonial.name + "testimonial image"}
                           className="w-11 h-11 rounded-full mr-2 object-cover"
                         />
-                        <span className="flex flex-col gap-1">
-                          <span className="text-sm text-zinc-600 font-normal">
+                        <span className="flex flex-col gap-0.5">
+                          <span className="text-sm text-zinc-700 font-medium">
                             {testimonial.name}
                           </span>
-                          <span className="text-sm text-zinc-600 font-normal">
+                          <span className="text-sm text-zinc-500 font-normal">
                             {testimonial.university} · {testimonial.country}
                           </span>
                         </span>

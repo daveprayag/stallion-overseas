@@ -431,9 +431,11 @@ function Landing() {
         {/* Left side with image (hidden on screens less than lg) */}
         <div className="hidden lg:block w-full lg:w-1/2 h-full p-5">
           {/* Insert your image here */}
-          <img
+          <Image
             src="contact.jpg"
             alt="Your Image"
+            width={100}
+            height={5}
             className="object-cover object-center h-[772px] w-full rounded-2xl"
           />
         </div>
