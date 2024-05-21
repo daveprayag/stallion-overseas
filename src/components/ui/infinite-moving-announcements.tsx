@@ -10,10 +10,12 @@ interface Announcement {
 
 export const InfiniteMovingAnnouncements = ({
   speed = "normal",
+  direction = "left",
   pauseOnHover = true,
   className,
 }: {
   speed?: "fast" | "normal" | "slow";
+  direction?: "left" | "right";
   pauseOnHover?: boolean;
   className?: string;
 }) => {
@@ -54,6 +56,7 @@ export const InfiniteMovingAnnouncements = ({
       });
 
       getSpeed();
+      getDirection();
       setStart(true);
     }
   }
@@ -66,6 +69,22 @@ export const InfiniteMovingAnnouncements = ({
         containerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
         containerRef.current.style.setProperty("--animation-duration", "80s");
+      }
+    }
+  };
+
+  const getDirection = () => {
+    if (containerRef.current) {
+      if (direction === "left") {
+        containerRef.current.style.setProperty(
+          "--animation-direction",
+          "forwards"
+        );
+      } else {
+        containerRef.current.style.setProperty(
+          "--animation-direction",
+          "reverse"
+        );
       }
     }
   };

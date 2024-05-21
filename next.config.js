@@ -1,19 +1,20 @@
-/** @type {import('next').NextConfig} */
+const webpack = require("webpack");
 
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
-};
-
-module.exports = {
   images: {
     domains: ["cloud.appwrite.io"],
   },
-  webpack: (config) => {
+  webpack(config) {
+    config.plugins.push(
+      new webpack.NormalModuleReplacementPlugin(
+        /^isomorphic-form-data$/,
+        `${config.context}/form-data-mock.js`
+      )
+    );
     config.resolve.alias.canvas = false;
 
     return config;
   },
-  nextConfig,
 };
+
+module.exports = nextConfig;

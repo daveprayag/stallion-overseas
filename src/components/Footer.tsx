@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import NewsletterForm from "./Newsletter-Form";
 
 function Footer() {
   return (
@@ -91,7 +92,7 @@ function Footer() {
               Subscribe to our Newsletter
             </h4>
 
-            <form>
+            {/* <form>
               <div className="mt-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-3 bg-zinc-100 rounded-lg p-2">
                 <div className="w-full">
                   <label htmlFor="hero-input" className="sr-only">
@@ -115,7 +116,8 @@ function Footer() {
               <p className="text-xs text-zinc-100 mt-2">
                 Only blog updates, no fuss.
               </p>
-            </form>
+            </form> */}
+            <NewsletterForm />
           </div>
           {/* <!-- End Col --> */}
         </div>
