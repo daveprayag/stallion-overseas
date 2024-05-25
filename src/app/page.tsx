@@ -8,13 +8,11 @@ import React, { useCallback, useEffect, useRef } from "react";
 import Balancer from "react-wrap-balancer";
 import { useState } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import BlogService from "@/services/blog.service";
-import { useRouter } from "next/navigation";
-import { sendEmail } from "../../actions/sendEmail";
-import toast from "react-hot-toast";
 import Carousel from "@/components/Carousel";
 import { InfiniteMovingAnnouncements } from "@/components/ui/infinite-moving-announcements";
 import ContactForm from "@/components/Contact-Form";
+import getLocalizedDate from "@/lib/getLocalizedDate";
+import slugify from "slugify";
 
 const testimonials = [
   {
@@ -153,11 +151,20 @@ const logos = [
   },
 ];
 
+interface Blog {
+  id: string;
+  title: string;
+  description: string;
+  country: string;
+  categories: string[];
+  imageUrl: { href: string };
+  publishDate: string;
+  minRead: string;
+}
+
 function Home() {
   const [blogs, setBlogs] = useState<any[]>([]);
-  const blogService = BlogService.getInstance();
   const ref = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["0 1", "1.33 1"],
@@ -181,9 +188,19 @@ function Home() {
 
   const fetchBlogs = useCallback(async () => {
     try {
-      const response = await blogService.getBlogs();
-      setBlogs(response);
-      console.log("Blogs", response);
+      const response = await fetch("/api/notion/notion");
+      const data = await response.json();
+      const mappedBlogs: Blog[] = data.map((blog: any) => ({
+        id: blog.id,
+        title: blog.title,
+        description: blog.summary,
+        country: blog.country,
+        categories: blog.categories,
+        imageUrl: { href: blog.thumbnail },
+        publishDate: blog.publishDate,
+        minRead: blog.minRead,
+      }));
+      setBlogs(mappedBlogs);
     } catch (error) {
       console.log("Error fetching blogs", error);
     }
@@ -352,7 +369,7 @@ function Home() {
       <section>
         <div className="bg-zinc-950 flex flex-col pb-20">
           <h2 className="text-zinc-100 text-2xl md:text-3xl xl:text-5xl py-10 sm:py-16 font-semibold flex justify-center text-center lg:text-left tracking-tight ">
-            Our success stories
+            Success Stories
           </h2>
           <InfiniteMovingCards
             items={testimonials}
@@ -386,7 +403,7 @@ function Home() {
 
       {/* Blogs */}
       <section>
-        <div className="bg-zinc-100 pt-10 sm:pt-20">
+        <div className="bg-zinc-100 pt-10 sm:pt-20 mx-2">
           <h2 className="text-zinc-800 text-3xl md:text-3xl xl:text-5xl mb-0 sm:mb-10 font-semibold flex justify-center text-center lg:text-left tracking-tight">
             Blogs
           </h2>
@@ -403,48 +420,82 @@ function Home() {
               .reverse()
               .map((blog: any) => (
                 <div
-                  key={blog.$id}
-                  className="max-w-xl hover:cursor-pointer ease-in-out duration-300 bg-white/80 border border-zinc-100 backdrop-blur-lg flex flex-col justify-between rounded-3xl hover:shadow-lg transition-smooth"
+                  key={slugify(blog.title)}
+                  className="max-w-xl hover:cursor-pointer bg-white/80 border border-zinc-100 mx-1 backdrop-blur-lg flex flex-col justify-between ease-in-out duration-300 rounded-xl hover:shadow-xl"
                 >
-                  <a href={`/blogs/${blog.id}`} target="_blank">
-                    <div className="relative">
+                  <a
+                    href={`/blogs/${slugify(blog.title).toLowerCase()}`}
+                    className="relative"
+                  >
+                    <div className="px-3 pt-3">
+                      <div className="flex justify-between items-center pb-3">
+                        <p className="text-sm font-medium text-[#4761ab]">
+                          <span className="w-fit flex bg-white/80 border-2 border-zinc-400 transition duration-200 rounded-lg px-2 py-1">
+                            <span className="text-sm font-medium tracking-tight text-zinc-500">
+                              {blog.country}
+                            </span>
+                          </span>
+                        </p>
+                        <p className="text-sm gap-1 font-medium tracking-tight text-zinc-500">
+                          {blog.minRead}
+                        </p>
+                      </div>
                       <Image
                         src={blog.imageUrl.href}
                         alt="blog image"
                         width={100}
                         height={100}
-                        loading="lazy"
-                        className="w-full h-64 rounded-3xl z-0 object-cover"
+                        priority={true}
+                        className="w-full h-60 rounded-lg object-cover shadow-md"
                       />
-                      <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-500 transition duration-200 rounded-full border-zinc-200 px-4 py-1 backdrop-blur-lg">
-                        <span className="text-md font-medium text-gray-200 flex gap-6">
-                          {blog.country}
-                        </span>
-                      </span>
                     </div>
-                    <div className="p-3">
-                      <h2 className="text-2xl font-bold mb-2 tracking-tight">
-                        {blog.title.split(" ").slice(0, 8).join(" ")}
-                        {blog.title.split(" ").length > 8 ? "..." : ""}
-                      </h2>
-                      <p className="mb-4">
-                        {" "}
-                        {blog.description.split(" ").slice(0, 18).join(" ")}
-                        {blog.description.split(" ").length > 18 ? "..." : ""}
-                      </p>
-                      <a
-                        target="_blank"
-                        href={`/blogs/${blog.id}`}
-                        className="text-[#4761ab] hover:underline"
-                      >
-                        Read more...
-                      </a>
-                    </div>
+                    {/* <span className="absolute top-0 left-0 m-4 border z-20 w-fit flex bg-zinc-50 transition duration-200 rounded-lg  px-2 py-1">
+                <span className="text-md font-medium text-zinc-900 flex gap-6">
+                  {blog.country}
+                </span>
+              </span> */}
                   </a>
+                  <div className="p-4">
+                    <p className="text-sm font-medium tracking-tight text-[#4761ab] mb-3">
+                      {getLocalizedDate(blog.publishDate)}
+                    </p>
+                    <h2 className="text-xl font-medium tracking-tight text-zinc-900">
+                      {blog.title.split(" ").slice(0, 8).join(" ")}
+                      {blog.title.split(" ").length > 8 ? "..." : ""}
+                    </h2>
+                    <p className="mb-3 text-md tracking-tight text-zinc-600">
+                      {blog.description.split(" ").slice(0, 17).join(" ")}
+                      {blog.description.split(" ").length > 17 ? "..." : ""}
+                    </p>
+
+                    {/* <a
+                target="_blank"
+                href={`/blogs/${slugify(blog.title).toLowerCase()}`}
+                className="text-zinc-700 font-medium tracking-tight flex gap-1 items-center hover:underline transition duration-300 ease-in-out"
+              >
+                Read more
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2.5"
+                    stroke="currentColor"
+                    className="size-4 text-zinc-700"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+                    />
+                  </svg>
+                </span>
+              </a> */}
+                  </div>
                 </div>
               ))}
           </motion.div>
-          <div className="flex justify-center mt-14">
+          <div className="flex justify-center mt-6">
             <Link
               href={"/blogs"}
               className="group bg-[#4761ab]/90 px-4 py-2 flex items-center gap-2 text-zinc-50 font-medium rounded-xl border border-zinc-400/50 outline-none"
@@ -471,17 +522,21 @@ function Home() {
 
       {/* Contact Section */}
       <section
-        className="flex justify-center pt-[80px] sm:pt-[100px] pb-20 px-0 xl:px-40"
+        className=" pt-[80px] sm:pt-[100px] pb-20 px-0 xl:px-40"
         id="contact"
       >
-        {/* Left side with image (hidden on screens less than lg) */}
-        <div className="hidden lg:block w-full lg:w-1/2 h-full">
-          {/* Insert your image here */}
-          <Carousel />
-        </div>
-        {/* Right side with form */}
-        <div className="w-full lg:w-1/2 pt-5">
-          <ContactForm />
+        <h2 className="text-zinc-800 text-3xl md:text-3xl mb-10 xl:text-5xl font-semibold flex justify-center text-center lg:text-left tracking-tight">
+          Contact Us
+        </h2>
+        <div className="flex justify-center">
+          {/* Left side with image (hidden on screens less than lg) */}
+          <div className="hidden lg:block w-full lg:w-1/2 h-full">
+            <Carousel />
+          </div>
+          {/* Right side with form */}
+          <div className="w-full lg:w-1/2 pt-5">
+            <ContactForm />
+          </div>
         </div>
       </section>
     </div>

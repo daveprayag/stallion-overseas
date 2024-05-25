@@ -2,7 +2,10 @@ const webpack = require("webpack");
 
 const nextConfig = {
   images: {
-    domains: ["cloud.appwrite.io"],
+    domains: [
+      "cloud.appwrite.io",
+      "prod-files-secure.s3.us-west-2.amazonaws.com",
+    ],
   },
   webpack(config) {
     config.plugins.push(
