@@ -214,12 +214,12 @@ export default function Blogs() {
                     {blog.minRead}
                   </p>
                 </div>
-                <Image
+                <img
                   src={blog.imageUrl.href}
                   alt="blog image"
                   width={100}
                   height={100}
-                  priority={true}
+                  loading="lazy"
                   className="w-full h-60 rounded-lg object-cover shadow-md"
                 />
               </div>
