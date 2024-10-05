@@ -231,6 +231,21 @@ function Navbar() {
                                 Germany{" "}
                               </li>
                             </Link>
+                            <Link
+                              href="/countries/dubai"
+                              className="cursor-pointer"
+                            >
+                              <li className="px-3 pt-2 pb-3 hover:bg-zinc-100 flex gap-2">
+                                <Image
+                                  src="/media/dubai.png"
+                                  width={20}
+                                  height={10}
+                                  alt="dubai-logo"
+                                  className="object-contain"
+                                />
+                                Dubai{" "}
+                              </li>
+                            </Link>
                             {/* Add other country links here */}
                           </motion.ul>
                         )}
